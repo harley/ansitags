@@ -1,0 +1,41 @@
+<pre><span style="font-weight: bold;">diff --git a/.gitignore b/.gitignore</span>
+<span style="font-weight: bold;">index 00c0b86..750b2d4 100644</span>
+<span style="font-weight: bold;">--- a/.gitignore</span>
+<span style="font-weight: bold;">+++ b/.gitignore</span>
+<span style="color: #008080;">@@ -1,5 +1,9 @@</span>
+<span style="color: #800000;">-*.sw?</span>
+ .DS_Store
+ coverage
+ rdoc
+ pkg
+<span style="color: #008000;">+</span><span style="color: #008000;">*~</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">tmp/*</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">*.swp</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">*.swo</span>
+<span style="background-color: #800000;">+</span>
+<span style="font-weight: bold;">diff --git a/bin/ansitags b/bin/ansitags</span>
+<span style="font-weight: bold;">new file mode 100755</span>
+<span style="font-weight: bold;">index 0000000..3f1c918</span>
+<span style="font-weight: bold;">--- /dev/null</span>
+<span style="font-weight: bold;">+++ b/bin/ansitags</span>
+<span style="color: #008080;">@@ -0,0 +1,6 @@</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">#!/usr/bin/env ruby</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">$:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')</span>
+<span style="color: #008000;">+</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">require 'ansitags'</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">ansi = STDIN.read</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">puts ansi.ansi_to_html</span>
+<span style="font-weight: bold;">diff --git a/lib/ansitags.rb b/lib/ansitags.rb</span>
+<span style="font-weight: bold;">index 4e69627..d619a77 100644</span>
+<span style="font-weight: bold;">--- a/lib/ansitags.rb</span>
+<span style="font-weight: bold;">+++ b/lib/ansitags.rb</span>
+<span style="color: #008080;">@@ -27,7 +27,7 @@</span> class String
+     current_foreground_color = low_intensity_colors[0]
+     current_background_color = high_intensity_colors[7]
+ 
+<span style="color: #800000;">-    '&lt;pre&gt;' + self.gsub('&amp;', '&amp;amp;').gsub('&quot;', '&amp;quot;').gsub('&lt;', '&amp;lt;').gsub('&gt;', '&amp;gt;').gsub(/\\e\[(\d+)m/) do |ansi_code|</span>
+<span style="color: #008000;">+</span><span style="color: #008000;">    '&lt;pre&gt;' + self.gsub('&amp;', '&amp;amp;').gsub('&quot;', '&amp;quot;').gsub('&lt;', '&amp;lt;').gsub('&gt;', '&amp;gt;').gsub(/\e\[(\d*)m/) do |ansi_code|</span>
+       case $1.to_i
+       when 0 # reset to default values
+         end_tags = start_tags
+</pre>

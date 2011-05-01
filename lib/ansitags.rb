@@ -27,7 +27,7 @@ class String
     current_foreground_color = low_intensity_colors[0]
     current_background_color = high_intensity_colors[7]
 
-    '<pre>' + self.gsub('&', '&amp;').gsub('"', '&quot;').gsub('<', '&lt;').gsub('>', '&gt;').gsub(/\\e\[(\d+)m/) do |ansi_code|
+    '<pre>' + self.gsub('&', '&amp;').gsub('"', '&quot;').gsub('<', '&lt;').gsub('>', '&gt;').gsub(/\e\[(\d*)m/) do |ansi_code|
       case $1.to_i
       when 0 # reset to default values
         end_tags = start_tags

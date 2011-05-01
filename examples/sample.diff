@@ -1,0 +1,40 @@
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 00c0b86..750b2d4 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -1,5 +1,9 @@[m
+[31m-*.sw?[m
+ .DS_Store[m
+ coverage[m
+ rdoc[m
+ pkg[m
+[32m+[m[32m*~[m
+[32m+[m[32mtmp/*[m
+[32m+[m[32m*.swp[m
+[32m+[m[32m*.swo[m
+[41m+[m
+[1mdiff --git a/bin/ansitags b/bin/ansitags[m
+[1mnew file mode 100755[m
+[1mindex 0000000..3f1c918[m
+[1m--- /dev/null[m
+[1m+++ b/bin/ansitags[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m#!/usr/bin/env ruby[m
+[32m+[m[32m$:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')[m
+[32m+[m
+[32m+[m[32mrequire 'ansitags'[m
+[32m+[m[32mansi = STDIN.read[m
+[32m+[m[32mputs ansi.ansi_to_html[m
+[1mdiff --git a/lib/ansitags.rb b/lib/ansitags.rb[m
+[1mindex 4e69627..d619a77 100644[m
+[1m--- a/lib/ansitags.rb[m
+[1m+++ b/lib/ansitags.rb[m
+[36m@@ -27,7 +27,7 @@[m [mclass String[m
+     current_foreground_color = low_intensity_colors[0][m
+     current_background_color = high_intensity_colors[7][m
+ [m
+[31m-    '<pre>' + self.gsub('&', '&amp;').gsub('"', '&quot;').gsub('<', '&lt;').gsub('>', '&gt;').gsub(/\\e\[(\d+)m/) do |ansi_code|[m
+[32m+[m[32m    '<pre>' + self.gsub('&', '&amp;').gsub('"', '&quot;').gsub('<', '&lt;').gsub('>', '&gt;').gsub(/\e\[(\d*)m/) do |ansi_code|[m
+       case $1.to_i[m
+       when 0 # reset to default values[m
+         end_tags = start_tags[m
