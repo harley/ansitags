@@ -7,7 +7,11 @@ Converts ANSI codes to HTML tags.
   sudo gem install harleytt-ansitags
 
 == Usage
+=== Command line
+An example of converting a diff file with ansi color codes to HTML with color css
+  $ git show master --color | ansitags
 
+=== Ruby
   "\e[92m\e[1mgreen bold text\e[0m".ansi_to_html
   => "<pre><span style="color: #00FF00"><span style="font-weight: bold;">green bold text</span></span></pre>"
 

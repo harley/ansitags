@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'harleytt-ansitags'
-  s.version = "0.1.4"
+  s.version = "0.1.5"
   s.authors = ["David Trasbo"]
   s.description = "Converts ANSI codes to HTML tags"
   s.summary = "#{s.name}-#{s.version}"
@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.5.3"
+  s.executables << 'ansitags'
 end
 
