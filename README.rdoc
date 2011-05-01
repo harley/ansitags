@@ -4,7 +4,7 @@ Converts ANSI codes to HTML tags.
 
 == Installation
 
-  sudo gem install ansitags --source http://gemcutter.org/
+  sudo gem install harleytt-ansitags
 
 == Usage
 
