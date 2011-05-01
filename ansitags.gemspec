@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- spec/*`.split("\n")
   s.rdoc_options = ["--charset=UTF-8"]
-  s.require_paths = "lib"
+  s.require_paths = ["lib"]
   s.rubygems_version = "1.5.3"
 end
 
